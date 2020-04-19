@@ -1,4 +1,4 @@
-package servlet´úÂë;
+package servletä»£ç ;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LoginServlet extends HttpServlet {
 	
-	//ÖØĞ´service
+	//é‡å†™service
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//reqÇëÇó¶ÔÏó  getParameter·½·¨»ñÈ¡Ç°¶Ë´«µİµÄÊı¾İ£¬Í¨¹ınameÖµ»ñÈ¡¶ÔÓ¦µÄvalueÖµ
+		//reqè¯·æ±‚å¯¹è±¡  getParameteræ–¹æ³•è·å–å‰ç«¯ä¼ é€’çš„æ•°æ®ï¼Œé€šè¿‡nameå€¼è·å–å¯¹åº”çš„valueå€¼
 		
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
@@ -25,15 +25,15 @@ public class LoginServlet extends HttpServlet {
 		Statement state=null;
 		ResultSet rs=null;
 				try {
-					//¼ÓÔØÇı¶¯
+					//åŠ è½½é©±åŠ¨
 					Class.forName("com.mysql.cj.jdbc.Driver");
-					//»ñÈ¡Á¬½Ó
+					//è·å–è¿æ¥
 					conn = DriverManager.getConnection("jdbc:mysql:///db2?serverTimezone=GMT%2B8", "root", "123456");
 					state = conn.createStatement();
-					System.out.println("Êı¾İ¿âÁ¬½Ó³É¹¦");
+					System.out.println("æ•°æ®åº“è¿æ¥æˆåŠŸ");
 					String sql = "select * from user where uname = '" + username + "' and password = '" + password + "'";
 					
-					//Ö´ĞĞ²éÑ¯sql·µ»Ø½á¹û¼¯
+					//æ‰§è¡ŒæŸ¥è¯¢sqlè¿”å›ç»“æœé›†
 					rs = state.executeQuery(sql);
 					if (rs.next()) {
 						System.out.println("1");
@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				//ÊÍ·Å×ÊÔ´
+				//é‡Šæ”¾èµ„æº
 				try {
 					rs.close();
 					state.close();
